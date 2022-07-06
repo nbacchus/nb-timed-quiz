@@ -8,8 +8,14 @@ button {
     border: black solid 1px;
 }
 
+h1 {
+    text-align: center;
+}
+
 .rule-box,
 .quiz-box,
 .results {
     background-color: white;
+    align-items: center;
+    width: 600px;
 }
