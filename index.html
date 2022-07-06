@@ -16,7 +16,7 @@
 
         <!--Rules-->
         <div class="rule-box">
-            <h3>Coding Quiz Instructions!</h3>
+            <h1>Coding Quiz Instructions!</h1>
             <p>
                 You have 50 seconds to answer 5 questions. If you answer incorrectly, you will lose 10 seconds. Once all of the questions are answered or the timer has run out, the game is over!
             </p>
@@ -53,9 +53,14 @@
         <div class="results">
             <p>You made it!</p>
             <div class="score">
+                <p>Your score is</p>
                 <!--Results will pull in from Javascript-->
             </div>
-            <button>Submit score here</button>
+            <form>
+                <label for="initials"></label>
+                <input type="text" placeholder="Enter Initials Here" name="initials"/>
+            </form>
+            <button class="submit">Submit score here</button>
         </div>
 
         <script src="./assets/js/javascript.js"></script>

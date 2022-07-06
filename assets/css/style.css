@@ -1,0 +1,15 @@
+body {
+    background-color: slategray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    background-color: lightblue;
+    border: black solid 1px;
+}
+
+.rule-box,
+.quiz-box,
+.results {
+    background-color: white;
+}
