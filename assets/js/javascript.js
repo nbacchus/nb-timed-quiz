@@ -67,6 +67,7 @@ let questions = [
 
 //intro box to quiz
 start_button.onclick = ()=>{
+    intro_box.classList.remove("activeIntro");
     quiz_box.classList.add("activeQuiz");
     showQuetions(0);
     queCounter(1);

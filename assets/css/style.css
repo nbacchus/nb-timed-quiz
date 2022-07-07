@@ -28,7 +28,7 @@ p {
                 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.rule_box.activeInfo,
+.intro_box.activeInfo,
 .quiz_box.activeQuiz,
 .result_box.activeResult{
     background-color: white;
@@ -38,6 +38,12 @@ p {
     transform: translate(-50%, -50%) scale(1);
 }
 
+.quiz_box header {
+    align-items: center;
+    justify-content: space-between;
+}
+
 .timer {
     align-items: center;
+    justify-content: space-between;
 }
