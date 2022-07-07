@@ -1,4 +1,4 @@
-const intro_button = document.querySelector(".intro_button button");
+const intro_box = document.querySelector(".intro_box");
 const rule_box = document.querySelector(".rule_box");
 const start_button = document.querySelector(".buttons");
 const quiz_box = document.querySelector(".quiz_box");
@@ -67,7 +67,7 @@ let questions = [
 ];
 
 //intro button to show the rules
-intro_button.onclick = ()=>{
+intro_box.onclick = ()=>{
     rule_box.classList.add("activeInfo");
 }
 
@@ -150,3 +150,9 @@ function optionSelected(answer){
     }
 }
 
+function showResult(){
+    rule_box.classList.remove("activeInfo");
+    quiz_box.classList.remove("activeQuiz");
+    results_box.classList.add("activeResult");
+    const scoreText = results_box.querySelector(".score_text");
+}
