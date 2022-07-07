@@ -1,8 +1,8 @@
 const intro_button = document.querySelector(".intro_button button");
 const rule_box = document.querySelector(".rule_box");
 const start_button = document.querySelector(".buttons");
-const quiz_box = document.querySelector(".quiz.box");
-const results = document.querySelector(".results");
+const quiz_box = document.querySelector(".quiz_box");
+const results_box = document.querySelector(".results");
 const multiple_choice = document.querySelector(".multiple_choice");
 const timeText = document.querySelector(".timer .time_left_text");
 const timeCount = document.querySelector(".timer .timer_sec");
@@ -87,21 +87,66 @@ let que_numb = 1;
 let userScore = 0;
 let counter;
 
-next.onclick = ()=>{
-    if(que_count < questions.length - 1){ //if question count is less than total question length
-        que_count++; //increment the que_count value
-        que_numb++; //increment the que_numb value
-        showQuetions(que_count); //calling showQestions function
-        queCounter(que_numb); //passing que_numb value to queCounter
-        clearInterval(counter); //clear counter
-        clearInterval(counterLine); //clear counterLine
-        startTimer(timeValue); //calling startTimer function
-        startTimerLine(widthValue); //calling startTimerLine function
-        timeText.textContent = "Time Left"; //change the timeText to Time Left
-        next_btn.classList.remove("show"); //hide the next button
+//go to next question
+next_button.onclick = ()=>{
+    if(que_count < questions.length - 1){
+        que_count++;
+        que_numb++;
+        showQuetions(que_count);
+        queCounter(que_numb);
+        clearInterval(counter);
+        startTimer(timeValue);
+        timeText.textContent = "Time Left";
+        next_button.classList.remove("show");
     }else{
-        clearInterval(counter); //clear counter
-        clearInterval(counterLine); //clear counterLine
-        showResult(); //calling showResult function
+        showResult();
     }
 }
+
+//questions and multiple choice
+function showQuetions(index){
+    const questions_list = document.querySelector(".questions_list");
+
+    //creating a new span and div tag for question and multiple choice options
+    let que_tag = '<span>'+ questions[index].numb + ". " + questions[index].question +'</span>';
+    let option_tag = '<div class="option"><span>'+ questions[index].options[0] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index].options[1] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index].options[2] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index].options[3] +'</span></div>';
+    questions_list.innerHTML = que_tag;
+    multiple_choice.innerHTML = option_tag;
+    
+    const option = multiple_choice.querySelectorAll(".option");
+
+    // set onclick attribute to all available options
+    for(i=0; i < option.length; i++){
+        option[i].setAttribute("onclick", "optionSelected(this)");
+    }
+}
+
+function optionSelected(answer){
+    clearInterval(counter);
+    let userAns = answer.textContent;
+    let correcAns = questions[que_count].answer;
+    const allOptions = multiple_choice.children.length;
+    
+    if(userAns == correcAns){
+        userScore += 1;
+        answer.classList.add("correct");
+        console.log("Correct Answer");
+        console.log("Your correct answers = " + userScore);
+    }else{
+        answer.classList.add("incorrect");
+        console.log("Wrong Answer");
+
+        for(i=0; i < allOptions; i++){
+            if(multiple_choice.children[i].textContent == correcAns){
+                multiple_choice.children[i].setAttribute("class", "option correct");
+                console.log("Auto selected correct answer.");
+            }
+        }
+    
+    next_button.classList.add("show");
+    }
+}
+
