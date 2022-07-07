@@ -14,7 +14,6 @@ p {
 }
 
 .intro_box,
-.rule_box,
 .quiz_box,
 .results_box {
     background-color: white;
@@ -28,22 +27,12 @@ p {
                 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.intro_box.activeInfo,
+.intro_box.activeIntro,
 .quiz_box.activeQuiz,
-.result_box.activeResult{
+.results_box.activeResult{
     background-color: white;
     opacity: 1;
     z-index: 5;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
-}
-
-.quiz_box header {
-    align-items: center;
-    justify-content: space-between;
-}
-
-.timer {
-    align-items: center;
-    justify-content: space-between;
 }

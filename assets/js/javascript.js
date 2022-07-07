@@ -5,6 +5,7 @@ const results_box = document.querySelector(".results");
 const multiple_choice = document.querySelector(".multiple_choice");
 const timeText = document.querySelector(".timer .time_left_text");
 const timeCount = document.querySelector(".timer .timer_sec");
+const next_button = document.querySelector(".next_button");
 
 //questions
 let questions = [
@@ -145,8 +146,22 @@ function optionSelected(answer){
 }
 
 function showResult(){
-    rule_box.classList.remove("activeInfo");
+    intro_box.classList.remove("activeIntro");
     quiz_box.classList.remove("activeQuiz");
     results_box.classList.add("activeResult");
-    const scoreText = results_box.querySelector(".score_text");
 }
+
+function startTimer(time){
+    counter = setInterval(timer, 1000);
+    function timer(){
+        timeCount.textContent = time; //changing the value of timeCount with time value
+        time--; //decrement the time value
+        if(time < 0){
+                    console.log("Game over");
+                }
+            }
+            for(i=0; i < allOptions; i++){
+                option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
+            }
+            next_btn.classList.add("show"); //show the next button if user selected any option
+        }
